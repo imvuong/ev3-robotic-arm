@@ -19,7 +19,7 @@ import rpyc
 # Create a RPyC connection to the remote ev3dev device.
 # Use the hostname or IP address of the ev3dev device.
 # If this fails, verify your IP connectivty via ``ping X.X.X.X``
-conn = rpyc.classic.connect('1.1.1.1') #change this IP address for your slave EV3 brick
+conn = rpyc.classic.connect('192.168.4.90') #change this IP address for your slave EV3 brick
 #remote_ev3 = conn.modules['ev3dev.ev3']
 remote_motor = conn.modules['ev3dev2.motor']
 remote_led = conn.modules['ev3dev2.led']
@@ -38,8 +38,8 @@ def scale_stick(value):
 ## Initializing ##
 logger.info("Finding wireless controller...")
 devices = [evdev.InputDevice(fn) for fn in evdev.list_devices()]
-#for device in devices:
-#    logger.info("{}".format(device.name))
+for device in devices:
+   logger.info("{}".format(device.name))
 
 ps4gamepad = devices[0].fn # PS4 gamepad
 #ps4motion = devices[1].fn # PS4 accelerometer
